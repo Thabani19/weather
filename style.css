@@ -1,0 +1,915 @@
+/* ==============================
+   GENERAL
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #74b9ff,
+        #0984e3
+    );
+    color: #ffffff;
+    transition: background 0.8s ease;
+}
+
+
+/* ==============================
+   MAIN APP
+================================= */
+
+.weather-app {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+
+/* ==============================
+   SEARCH SECTION
+================================= */
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+
+    width: 100%;
+}
+
+
+/* ==============================
+   SEARCH INPUT
+================================= */
+
+.search-section input {
+    width: 380px;
+
+    padding: 15px 18px;
+
+    border: 2px solid transparent;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.search-section input:focus {
+    border-color: #0984e3;
+
+    box-shadow:
+        0 0 0 3px rgba(
+            9,
+            132,
+            227,
+            0.15
+        );
+}
+
+
+/* ==============================
+   SEARCH BUTTONS
+================================= */
+
+.search-section button {
+    padding: 15px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: #ffffff;
+
+    color: #0984e3;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    white-space: nowrap;
+}
+
+.search-section button:hover {
+    background-color: #f1f1f1;
+
+    transform: translateY(-2px);
+}
+
+.search-section button:active {
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   CURRENT WEATHER
+================================= */
+
+.current-weather {
+    background: rgba(
+        255,
+        255,
+        255,
+        0.18
+    );
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.location h2 {
+    font-size: 32px;
+
+    margin-bottom: 8px;
+}
+
+.location p {
+    opacity: 0.85;
+}
+
+.weather-main {
+    margin-top: 25px;
+}
+
+.weather-icon {
+    font-size: 80px;
+
+    margin-bottom: 10px;
+}
+
+.temperature {
+    font-size: 70px;
+
+    font-weight: bold;
+}
+
+.condition {
+    font-size: 22px;
+
+    margin-top: 8px;
+}
+
+
+/* ==============================
+   LAST UPDATED
+================================= */
+
+.last-updated {
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    opacity: 0.7;
+}
+
+
+/* ==============================
+   WEATHER DETAILS
+================================= */
+
+.weather-details {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 35px;
+}
+
+.weather-card {
+    background: rgba(
+        255,
+        255,
+        255,
+        0.18
+    );
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.weather-card:hover {
+    transform: translateY(-4px);
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.25
+    );
+}
+
+.weather-card h3 {
+    font-size: 15px;
+
+    margin-bottom: 12px;
+
+    opacity: 0.85;
+}
+
+.weather-card p {
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   FORECAST
+================================= */
+
+.forecast-section {
+    margin-bottom: 30px;
+}
+
+.forecast-section > h2 {
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    font-size: 28px;
+}
+
+.forecast-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 15px;
+}
+
+
+/* ==============================
+   FORECAST CARD
+================================= */
+
+.forecast-card {
+    background: rgba(
+        255,
+        255,
+        255,
+        0.18
+    );
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 18px;
+
+    padding: 25px 15px;
+
+    text-align: center;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.25
+    );
+}
+
+
+/* ==============================
+   FORECAST DAY
+================================= */
+
+.forecast-card h3 {
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+
+/* ==============================
+   FORECAST DATE
+================================= */
+
+.forecast-date {
+    font-size: 14px;
+
+    opacity: 0.75;
+
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   FORECAST ICON
+================================= */
+
+.forecast-icon {
+    font-size: 48px;
+
+    margin-bottom: 12px;
+}
+
+
+/* ==============================
+   FORECAST CONDITION
+================================= */
+
+.forecast-condition {
+    font-size: 15px;
+
+    margin-bottom: 15px;
+
+    font-weight: 500;
+}
+
+
+/* ==============================
+   FORECAST TEMPERATURE
+================================= */
+
+.forecast-temperature {
+    margin-bottom: 15px;
+}
+
+.forecast-temperature strong {
+    font-size: 22px;
+}
+
+.forecast-temperature span {
+    font-size: 16px;
+
+    opacity: 0.7;
+
+    margin-left: 6px;
+}
+
+
+/* ==============================
+   RAIN PROBABILITY
+================================= */
+
+.forecast-rain {
+    font-size: 14px;
+
+    opacity: 0.9;
+}
+
+
+/* ==============================
+   FOOTER
+================================= */
+
+.footer {
+    text-align: center;
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+    opacity: 0.8;
+}
+
+
+/* ==============================
+   WEATHER BACKGROUNDS
+================================= */
+
+
+/* CLEAR SKY */
+
+body.clear-sky {
+    background:
+        linear-gradient(
+            135deg,
+            #74b9ff,
+            #0984e3
+        );
+}
+
+
+/* MAINLY CLEAR */
+
+body.mainly-clear {
+    background:
+        linear-gradient(
+            135deg,
+            #81ecec,
+            #0984e3
+        );
+}
+
+
+/* PARTLY CLOUDY */
+
+body.partly-cloudy {
+    background:
+        linear-gradient(
+            135deg,
+            #74b9ff,
+            #636e72
+        );
+}
+
+
+/* OVERCAST */
+
+body.overcast {
+    background:
+        linear-gradient(
+            135deg,
+            #b2bec3,
+            #636e72
+        );
+}
+
+
+/* FOG */
+
+body.foggy {
+    background:
+        linear-gradient(
+            135deg,
+            #dfe6e9,
+            #8395a7
+        );
+}
+
+
+/* DRIZZLE */
+
+body.drizzle {
+    background:
+        linear-gradient(
+            135deg,
+            #636e72,
+            #2d3436
+        );
+}
+
+
+/* RAIN */
+
+body.rainy {
+    background:
+        linear-gradient(
+            135deg,
+            #4b6584,
+            #1e272e
+        );
+}
+
+
+/* SNOW */
+
+body.snowy {
+    background:
+        linear-gradient(
+            135deg,
+            #dfe6e9,
+            #74b9ff
+        );
+}
+
+
+/* THUNDERSTORM */
+
+body.thunderstorm {
+    background:
+        linear-gradient(
+            135deg,
+            #2f3542,
+            #1e272e
+        );
+}
+
+
+/* ==============================
+   NIGHT WEATHER BACKGROUNDS
+================================= */
+
+
+/* CLEAR NIGHT */
+
+body.night-clear {
+    background:
+        linear-gradient(
+            135deg,
+            #141e30,
+            #243b55
+        );
+}
+
+
+/* MAINLY CLEAR NIGHT */
+
+body.night-mainly-clear {
+    background:
+        linear-gradient(
+            135deg,
+            #182848,
+            #4b6cb7
+        );
+}
+
+
+/* PARTLY CLOUDY NIGHT */
+
+body.night-partly-cloudy {
+    background:
+        linear-gradient(
+            135deg,
+            #232526,
+            #414345
+        );
+}
+
+
+/* OVERCAST NIGHT */
+
+body.night-overcast {
+    background:
+        linear-gradient(
+            135deg,
+            #1f2933,
+            #3f4c5a
+        );
+}
+
+
+/* FOGGY NIGHT */
+
+body.night-foggy {
+    background:
+        linear-gradient(
+            135deg,
+            #263238,
+            #455a64
+        );
+}
+
+
+/* DRIZZLE NIGHT */
+
+body.night-drizzle {
+    background:
+        linear-gradient(
+            135deg,
+            #263238,
+            #37474f
+        );
+}
+
+
+/* RAINY NIGHT */
+
+body.night-rainy {
+    background:
+        linear-gradient(
+            135deg,
+            #17202a,
+            #273746
+        );
+}
+
+
+/* SNOWY NIGHT */
+
+body.night-snowy {
+    background:
+        linear-gradient(
+            135deg,
+            #34495e,
+            #607d8b
+        );
+}
+
+
+/* THUNDERSTORM NIGHT */
+
+body.night-thunderstorm {
+    background:
+        linear-gradient(
+            135deg,
+            #0b0f14,
+            #20242a
+        );
+}
+
+
+/* ==============================
+   WEATHER EFFECTS LAYER
+================================= */
+
+#weatherEffects {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+/* ==============================
+   CLOUD
+================================= */
+
+.weather-cloud {
+    position: absolute;
+
+    width: 260px;
+    height: 65px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    opacity: 0.65;
+
+    filter: blur(3px);
+
+    box-shadow:
+        0 8px 20px rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+
+    animation:
+        moveCloud linear infinite;
+}
+
+
+/* ==============================
+   CLOUD TOP
+================================= */
+
+.weather-cloud::before {
+    content: "";
+
+    position: absolute;
+
+    left: 45px;
+    top: -35px;
+
+    width: 100px;
+    height: 70px;
+
+    border-radius:
+        60px 60px 20px 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.78),
+            rgba(255, 255, 255, 0.42)
+        );
+
+    filter: blur(3px);
+}
+
+
+/* ==============================
+   CLOUD SECONDARY PUFF
+================================= */
+
+.weather-cloud::after {
+    content: "";
+
+    position: absolute;
+
+    right: 45px;
+    top: -25px;
+
+    width: 85px;
+    height: 60px;
+
+    border-radius:
+        60px 60px 20px 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.72),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    filter: blur(3px);
+}
+
+
+/* ==============================
+   CLOUD MOVEMENT
+================================= */
+
+@keyframes moveCloud {
+
+    0% {
+        transform:
+            translateX(-350px)
+            scale(var(--cloud-scale, 1));
+    }
+
+    100% {
+        transform:
+            translateX(
+                calc(100vw + 350px)
+            )
+            scale(var(--cloud-scale, 1));
+    }
+
+}
+
+
+/* ==============================
+   NIGHT CLOUDS
+================================= */
+
+body.night-partly-cloudy
+.weather-cloud,
+
+body.night-overcast
+.weather-cloud,
+
+body.night-foggy
+.weather-cloud {
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.30),
+            rgba(255, 255, 255, 0.12)
+        );
+
+    opacity: 0.45;
+}
+
+
+/* ==============================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+
+    .weather-app {
+        width: 94%;
+
+        margin: 25px auto;
+    }
+
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+
+    .search-section {
+        flex-direction: column;
+    }
+
+
+    .search-section input {
+        width: 100%;
+    }
+
+
+    .search-section button {
+        width: 100%;
+    }
+
+
+    .weather-details {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .forecast-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .temperature {
+        font-size: 55px;
+    }
+
+
+    .weather-icon {
+        font-size: 65px;
+    }
+
+}
+
+
+/* ==============================
+   SMALL MOBILE
+================================= */
+
+@media (max-width: 450px) {
+
+    .weather-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .current-weather {
+        padding: 25px 15px;
+    }
+
+
+    .location h2 {
+        font-size: 27px;
+    }
+
+
+    .temperature {
+        font-size: 48px;
+    }
+
+
+    .weather-icon {
+        font-size: 55px;
+    }
+
+
+    .condition {
+        font-size: 19px;
+    }
+
+}
